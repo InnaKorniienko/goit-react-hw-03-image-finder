@@ -15,7 +15,7 @@ componentDidMount() {
     this.fetchGallery();
 }
 
-fetchGallery = () => {
+fetchGallery () {
     const { page } = this.state;
     this.setState ({
         loading: true
