@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Loader from "./Loader.module.scss";
+import Loader from "./Loader";
 import ImageGalleryItem from "./ImageGalleryItem";
 
 export default class Gallery extends Component {
@@ -15,7 +15,7 @@ componentDidMount() {
     this.fetchGallery();
 }
 
-fetchGallery() {
+fetchGallery = () => {
     const { page } = this.state;
     this.setState ({
         loading: true
@@ -41,6 +41,7 @@ axios.get(`https://pixabay.com/api/?q=cat&page=${page}&key=29162955-32e71cd5a6ca
     const { hits, loading, error } = this.state;
     const isImage = Boolean(hits.length);
    return (<div>
+    <p>Tralyaya</p>
     {loading && <Loader />}
     {error && <p> Please try later...</p>}
     {isImage && <ImageGalleryItem hits={hits}/>}

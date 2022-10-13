@@ -1,11 +1,11 @@
 import React from "react";
-import styles from "./loader.module.scss";
+import css from "./Loader.module.css";
 
 
 export default function Loader() {
     return (
-        <div className={styles.backdrop}>
-            <div className={styles.loader}></div>
+        <div className={css.backdrop}>
+            <div className={css.loader}></div>
         </div>
     )
 }
