@@ -1,23 +1,20 @@
 import React from "react";
 import css from "./ImageGalleryItem.module.css";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
-const ImageGalleryItem = ({ hits, onClick }) => {
-    const images = hits.map(({id, webformatURL, tags}) => 
-    <li key={id} className={css.item}>
-        <img src={webformatURL} alt={tags} onClick={() => onClick({webformatURL})}/>
-    </li>);
-
-    return <ul className={css.gallery}> {images} </ul>
-}
+const ImageGalleryItem = (({hitId, webformatURL, openModal}) => 
+{
+    return (
+        <li className={css.item} onClick={() => openModal({hitId})}>
+        <img className={css.image} src={webformatURL} alt=""/>
+        </li>
+    )
+});
 
 export default ImageGalleryItem;
 
-// ImageGalleryItem.propTypes = {
-//     hits:PropTypes.arrayOf(PropTypes.shape({
-//         id: PropTypes.string.isRequired,
-//         webformatURL: PropTypes.string.isRequired,
-//         tags: PropTypes.string.isRequired,
-//         onClick: PropTypes.func.isRequired,
-//     }))
-// }
+ImageGalleryItem.propTypes = {
+        hitId: PropTypes.number.isRequired,
+        webformatURL: PropTypes.string.isRequired,
+        openModal: PropTypes.func.isRequired,
+    }
