@@ -130,7 +130,7 @@ handleFetchHits = async () => {
         {loading && <Loader />}
         {buttonVisible && <LoadMore onClick={handleLoadMore} />}
         {showModal && (
-          <Modal url={largeImageURL} closeModal={toggleModal}/>
+          <Modal largeImageURL={largeImageURL} closeModal={toggleModal}/>
         )}
       </div>
     );
