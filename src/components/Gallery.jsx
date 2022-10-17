@@ -17,10 +17,8 @@ export default class Gallery extends Component {
         per_page: 12,
         totalPages: 0,
         loading: false,
-        modal: {
-            status: false,
-            content: '',
-        },
+        showModal: false,
+        largeImageURL: '',
         error: {
             status: false,
             message: '',
@@ -89,33 +87,37 @@ handleFetchHits = async () => {
     });
   };
 
-  handleOpenModal = hitId => {
-    const currentImage = this.state.hits.find(hit => hit.id === hitId);
+  // handleOpenModal = (largeImage, tag, id) => {
+  //   this.setState({
+  //     modal: {
+  //       status: true,
+  //     },
+  //     largeImageURL: largeImage,
+  //     tags: tag,
+  //       })
+  // };
 
-    this.setState({
-      modal: {
-        status: true,
-        content: currentImage.largeImageURL,
-      },
-    });
+  // handleCloseModal = () => {
+  //   this.setState({
+  //     modal: false,
+  //     largeImageURL: "",
+  //   });
+  // };
+
+  toggleModal = (largeImage) => {
+    this.setState(({ showModal }) => ({
+      showModal: !showModal,
+      largeImageURL: largeImage,
+    }));
   };
 
-  handleCloseModal = () => {
-    this.setState({
-      modal: {
-        status: false,
-        content: '',
-      },
-    });
-  };
 
   render() {
-    const { hits, page, totalPages, loading, modal, error } = this.state;
-    const { handleSubmit, handleOpenModal, handleCloseModal, handleLoadMore } =
+    const { hits, page, totalPages, loading, showModal, error, largeImageURL } = this.state;
+    const { handleSubmit, toggleModal, handleLoadMore } =
       this;
     const isHits = hits.length > 0;
-    const isModalOpen = modal.status;
-    const modalContent = modal.content;
+    // const isModalOpen = modal.status;
     const showError = error.status && !loading;
     const errorMessage = error.message;
     const buttonVisible = isHits && page < totalPages && ! loading;
@@ -124,11 +126,11 @@ handleFetchHits = async () => {
       <div className={css.container}>
         <Searchbar onSubmit={handleSubmit} />
         {showError && errorMessage}
-        {isHits && <ImageGallery hits={hits} openModal={handleOpenModal} />}
+        {isHits && <ImageGallery hits={hits} openModal={toggleModal} />}
         {loading && <Loader />}
         {buttonVisible && <LoadMore onClick={handleLoadMore} />}
-        {isModalOpen && (
-          <Modal largeImageURL={modalContent} closeModal={handleCloseModal} />
+        {showModal && (
+          <Modal url={largeImageURL} closeModal={toggleModal}/>
         )}
       </div>
     );
