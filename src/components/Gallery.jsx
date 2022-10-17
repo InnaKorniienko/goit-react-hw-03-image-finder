@@ -104,10 +104,10 @@ handleFetchHits = async () => {
   //   });
   // };
 
-  toggleModal = (largeImage) => {
+  toggleModal = (largeImageURL) => {
     this.setState(({ showModal }) => ({
       showModal: !showModal,
-      largeImageURL: largeImage,
+      largeImageURL: largeImageURL,
     }));
   };
 
