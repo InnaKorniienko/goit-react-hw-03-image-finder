@@ -18,13 +18,3 @@ export const getFetch = async(query, page = 1, per_page = 12) => {
     return response.data;
 }
 
-// export const searchFetch = async(q, page = 1) => {
-//     const { data } = await instance.get("?", {
-//         params: {
-//             page,
-//             q,
-//         }
-//     })
-//     return data;
-// }
-

@@ -1,24 +1,16 @@
-import React, { Component } from "react";
 import PropTypes from 'prop-types';
 import ImageGalleryItem from "./ImageGalleryItem";
 import css from "./ImageGallery.module.css";
 
-export default class ImageGallery extends Component {
- render() {
-    const { hits, openModal } = this.props;
+export const ImageGallery = ({hits, onClick}) => {
    return (<ul className={css.gallery}>
-    {hits.map(({ id, webformatURL }) => (<ImageGalleryItem key={id} hitId={id} webformatURL={webformatURL} openModal={openModal}/>))}
-   </ul>);
- }
-}
+    {hits.map(hit => {
+        return <ImageGalleryItem key={hit.id} hit={hit} onClick={onClick}/>
+        })}
+   </ul>)
+ };
 
-ImageGallery.propTypes = {
-    hits: PropTypes.arrayOf(
-        PropTypes.shape({
-            id: PropTypes.number,
-            webformatURL: PropTypes.string.isRequired,
-        })
-    ),
-openModal: PropTypes.func.isRequired,
-}
-
+ ImageGallery.propTypes = {
+    hits: PropTypes.arrayOf(PropTypes.object),
+    onClick: PropTypes.func.isRequired,
+};

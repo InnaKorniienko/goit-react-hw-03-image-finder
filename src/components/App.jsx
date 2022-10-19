@@ -3,7 +3,7 @@ import Gallery from "./Gallery";
 
 export const App = () => {
   return (
-    <div>
+    <div className="container">
       <Gallery />
     </div>
   );
