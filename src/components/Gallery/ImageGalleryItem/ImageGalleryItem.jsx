@@ -15,8 +15,7 @@ const ImageGalleryItem = ({hit, onClick}) =>
 export default ImageGalleryItem;
 
 ImageGalleryItem.propTypes = {
-    hits: PropTypes.exact({
-        id: PropTypes.string,
+    hit: PropTypes.shape({
         webformatURL: PropTypes.string,
         largeImageURL: PropTypes.string,
     }),

@@ -39,6 +39,6 @@ export class Modal extends Component {
 }
 
 Modal.propTypes = {
-  url: PropTypes.string,
+  url: PropTypes.string.isRequired,
   closeModal: PropTypes.func.isRequired,
 };

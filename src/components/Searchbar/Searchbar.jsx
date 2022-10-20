@@ -10,6 +10,7 @@ export default class Searchbar extends Component {
     handleChange = e => {
         const { value } = e.currentTarget;
         this.setState({ query: value });
+        console.log(value);
     }
 
     handleSubmit = e => {
@@ -18,12 +19,12 @@ export default class Searchbar extends Component {
         if (query.trim() !== '') {
             this.props.onSubmit(query.trim());
         }
-        this.reset();
+        // this.reset();
     }
 
-    reset = () => {
-        this.setState({ query: ''})
-    }
+    // reset = () => {
+    //     this.setState({ query: ''})
+    // }
 
     render () {
         const { query } = this.state;

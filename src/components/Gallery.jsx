@@ -2,10 +2,10 @@ import React from "react";
 import { Component } from "react";
 import { getFetch } from "./Fetch/Fetch";
 import Searchbar from "./Searchbar/Searchbar";
-import { ImageGallery } from "./Gallery/ImageGallery";
-import Loader from "./Gallery/Loader";
-import { Modal } from "./Gallery/Modal";
-import { LoadMore } from "./Gallery/Button";
+import { ImageGallery } from "./Gallery/ImageGallery/ImageGallery";
+import Loader from "./Gallery/Loader/Loader";
+import { Modal } from "./Gallery/Modal/Modal";
+import { LoadMore } from "./Gallery/Button/Button";
 
 
 export default class Gallery extends Component {
