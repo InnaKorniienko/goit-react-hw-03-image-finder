@@ -13,6 +13,7 @@ export default class Searchbar extends Component {
         console.log(value);
     }
 
+
     handleSubmit = e => {
         const { query } = this.state;
         e.preventDefault();
@@ -38,7 +39,7 @@ export default class Searchbar extends Component {
             <input
             value={query}
             className={css.searchFormInput}
-            type="text"
+            type="search"
             autoComplete="off"
             autoFocus
             placeholder="Search images and photos"

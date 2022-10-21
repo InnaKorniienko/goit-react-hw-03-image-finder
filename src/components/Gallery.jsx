@@ -75,6 +75,7 @@ handleFetchHits = async () => {
   };
 
   handleSubmit = query => {
+    if (query !== this.state.query) {
     this.setState({
       hits: [],
       query,
@@ -84,6 +85,7 @@ handleFetchHits = async () => {
         message: '',
       },
     });
+  };
   };
 
 toggleModal = (url) => {
